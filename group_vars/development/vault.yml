@@ -1,0 +1,15 @@
+# Documentation: https://roots.io/trellis/docs/vault/
+vault_mysql_root_password: root
+
+# Variables to accompany `group_vars/development/ezplatform_sites.yml`
+# Note: the site name (`example.com`) must match up with the site name in the above file.
+vault_ezplatform_sites:
+  ezplatform.com:
+    env:
+      database_driver: pdo_mysql
+      database_user: ezplatform
+      database_name: ezplatform
+      database_password: fh4gQ37L4CodnzLLr8
+      database_host: localhost
+      database_port: null
+      symfony_secret: ThisEzPlatformTokenIsNotSoSecret_PleaseChangeIt

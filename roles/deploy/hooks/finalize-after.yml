@@ -1,0 +1,6 @@
+---
+- block:
+- name: Reload php-fpm
+  shell: sudo service php7.2-fpm reload
+  args:
+    warn: false

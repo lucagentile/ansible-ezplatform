@@ -1,0 +1,25 @@
+---
+- block:
+  - name: Create databases for sites
+    mysql_db:
+      name: "{{ site_env.database_name }}"
+      state: present
+      login_host: "{{ site_env.database_host }}"
+      login_user: "{{ mysql_root_user }}"
+      login_password: "{{ mysql_root_password }}"
+    with_dict: "{{ ezplatform_sites }}"
+
+  - name: Create/assign database user to db and grant permissions
+    mysql_user:
+      name: "{{ site_env.database_user }}"
+      password: "{{ site_env.database_password }}"
+      host: "{{ site_env.database_user_host }}"
+      append_privs: yes
+      priv: "{{ site_env.database_name }}.*:ALL"
+      state: present
+      login_host: "{{ site_env.database_host }}"
+      login_user: "{{ mysql_root_user }}"
+      login_password: "{{ mysql_root_password }}"
+    with_dict: "{{ ezplatform_sites }}"
+
+  when: site_uses_local_db and item.value.db_create | default(true)

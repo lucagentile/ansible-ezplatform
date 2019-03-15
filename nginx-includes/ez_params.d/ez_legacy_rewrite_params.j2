@@ -1,0 +1,16 @@
+rewrite "^tags/treemenu/?" "index_treemenu_tags.php" last;
+rewrite "^index_treemenu_tags\.php" "/index_treemenu_tags.php" last;
+
+rewrite "^/var/([^/]+/)?cache/(texttoimage|public)/(.*)" "/var/$1cache/$2/$3" break;
+rewrite "^/design/([^/]+)/(stylesheets|images|javascript|fonts)/(.*)" "/design/$1/$2/$3" break;
+rewrite "^/share/icons/(.*)" "/share/icons/$1" break;
+rewrite "^/extension/([^/]+)/design/([^/]+)/(stylesheets|flash|images|lib|javascripts?)/(.*)" "/extension/$1/design/$2/$3/$4" break;
+rewrite "^/packages/styles/(.+)/(stylesheets|images|javascript)/([^/]+)/(.*)" "/packages/styles/$1/$2/$3/$4" break;
+rewrite "^/packages/styles/(.+)/thumbnail/(.*)" "/packages/styles/$1/thumbnail/$2" break;
+rewrite "^/var/storage/packages/(.*)" "/var/storage/packages/$1" break;
+
+# Uncomment the line below if you want you favicon be served
+# from the standard design. You can customize the path to
+# favicon.ico by changing /design/standard/images/favicon\.ico
+#rewrite "^/favicon\.ico" "/design/standard/images/favicon.ico" break;
+rewrite "^/design/standard/images/favicon\.ico" "/design/standard/images/favicon.ico" break;

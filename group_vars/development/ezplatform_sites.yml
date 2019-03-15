@@ -1,0 +1,18 @@
+# Define accompanying passwords/secrets in group_vars/development/vault.yml
+
+ezplatform_sites:
+  ezplatform.com:
+    site_hosts:
+      - canonical: ezplatform.test
+        redirects:
+          - www.ezplatform.test
+    local_path: ../site # path targeting local Bedrock site directory (relative to Ansible root)
+    ssl:
+      enabled: true
+      provider: self-signed
+    cache:
+      enabled: false
+    multisite:
+      enabled: false
+#      enabled: true
+#      subdomains: true

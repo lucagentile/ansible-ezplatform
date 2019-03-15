@@ -1,0 +1,20 @@
+composer_keep_updated: true
+composer_global_packages:
+ - { name: hirak/prestissimo }
+apt_cache_valid_time: 3600
+apt_package_state: present
+apt_security_package_state: latest
+apt_dev_package_state: latest
+ntp_timezone: Etc/UTC
+ntp_manage_config: true
+www_root: /srv/www
+ip_whitelist:
+  - "{{ (env == 'development') | ternary(ansible_default_ipv4.gateway, ipify_public_ip | default('')) }}"
+
+raw_vars:
+  - vault_mail_password
+  - vault_mysql_root_password
+  - vault_users.*.password
+  - vault_users.*.salt
+  - vault_ezplatform_env_defaults
+  - vault_ezplatform_sites
