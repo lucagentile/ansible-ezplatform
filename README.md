@@ -64,7 +64,7 @@ $ mkdir example.com && cd example.com
 ```
 2. Install Trellis:
 ```plain
-$ git clone --depth=1 git@github.com:roots/trellis.git && rm -rf trellis/.git
+$ git clone --depth=1 git@github.com:lucagentile/ansible-ezplatform.git ansible && rm -rf ansible/.git
 ```
 3. Install eZ Platform into the `site` directory:
 ```plain
