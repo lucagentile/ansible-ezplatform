@@ -103,6 +103,7 @@ and use it for loading ezlegacy rewrite rules in nginx .conf files, and install 
 2. Add *imagick* and *gd* parameter, and use it for installing just one instead of both
 3. Use .env variables also for parameters.yml
 4. Deployment strategy
+5. Separate SYMFONY_HTTP_CACHE from php-fpm cache as parameter in sites.yml
 
 ## Contributing
 
