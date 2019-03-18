@@ -12,9 +12,7 @@ server {
   root {{ www_root }}/{{ item.key }}/{{ item.value.current_path | default('current') }}/web;
 
   {% block assetic_rules -%}
-  {% if env != 'development' -%}
   include /etc/nginx/includes.d/ez_params.d/ez_prod_rewrite_params;
-  {% endif -%}
   {% endblock -%}
 
   # Include image rule for DFS or binary handler
