@@ -25,3 +25,11 @@
     state: directory
     recurse: yes
   with_dict: "{{ ezplatform_sites }}"
+
+- name: Create tmp cache dir
+  file:
+    path: "/tmp/ezplatformcache"
+    owner: "{{ web_user }}"
+    group: "{{ web_group }}"
+    mode: 0755
+    state: directory
