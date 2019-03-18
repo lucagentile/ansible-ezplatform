@@ -43,7 +43,7 @@
   tags: ezplatform-setup-nginx
 
 - name: Install eZ Platform
-  command: composer ezplatform-install
+  command: "php bin/console ezplatform:install clean"
   args:
     chdir: "{{ www_root }}/{{ item.key }}/{{ item.value.current_path | default('current') }}/"
   with_dict: "{{ ezplatform_sites }}"
