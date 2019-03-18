@@ -18,6 +18,6 @@ ezplatform_sites:
 #      subdomains: true
     ssl:
       enabled: true
-      provider: letsencrypt
+      provider: self-signed
     cache:
       enabled: false
