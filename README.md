@@ -39,13 +39,7 @@ $ vagrant plugin install vagrant-landrush
 
 **Windows user?**
 
-From the Windows Subsystem for Linux
-```shell
-$ sudo apt-get install python-pip
-$ pip install ansible
-
-# Install a specific Ansible version:
-$ pip install ansible==2.4.0.0
+Check the instructions here https://roots.io/getting-started/docs/windows-development-environment-trellis/
 ```
 
 ## Installation
@@ -62,7 +56,7 @@ example.com/      # → Root folder for the project
 ```plain
 $ mkdir example.com && cd example.com
 ```
-2. Install Trellis:
+2. Install ansible-ezplatform:
 ```plain
 $ git clone --depth=1 git@github.com:lucagentile/ansible-ezplatform.git ansible && rm -rf ansible/.git
 ```
@@ -78,6 +72,13 @@ and in `group_vars/development/vault.yml` accordingly to the already inputed set
 to allow for multiple boxes to be run concurrently
 3. Ensure you're in the ansible directory: `cd ansible`
 4. Run `vagrant up`
+5. Edit assetic configuration in `site/app/config.yml`
+```
+assetic:
+    debug: false
+    use_controller:
+        enabled: false
+```
 
 ## Remote server setup (staging/production)
 
@@ -90,7 +91,9 @@ A base Ubuntu 18.04 (Bionic) server is required for setting up remote servers. O
 3. Specify public SSH keys for `users` in `group_vars/all/users.yml`
 4. Run `ansible-playbook server.yml -e env=<environment>` to provision the server
 
-## Deploying to remote servers
+Remember that after provisioning a remote server, composer tasks like `composer install` are demanded to the deploy task
+
+## Deploying to remote servers (WIP)
 
 1. Add the `repo` (Git URL) of your eZ Platform project in the corresponding `group_vars/<environment>/ezplatform_sites.yml` file
 2. Set the `branch` you want to deploy
