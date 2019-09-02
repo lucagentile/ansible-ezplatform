@@ -9,15 +9,10 @@ ezplatform_sites:
 #        redirects:
 #          - otherdomain.com
     local_path: ../site # path targeting local Bedrock site directory (relative to Ansible root)
-    repo: git@github.com:example/example.com.git # replace with your Git repo URL
-    repo_subtree_path: site # relative path to your Bedrock/WP directory in your repo
-    branch: master
-    multisite:
-      enabled: false
-#      enabled: true
-#      subdomains: true
+    repo_subtree_path: site
+    deploy_keep_releases: 3
+    branch: dev
     ssl:
-      enabled: true
-      provider: self-signed
+      enabled: false
     cache:
       enabled: false

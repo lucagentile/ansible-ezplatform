@@ -1,4 +1,4 @@
-Invalid WordPress sites configuration: site names in `ezplatform_sites` must have matching entry in `vault_ezplatform_sites`.
+Invalid eZ Platform sites configuration: site names in `ezplatform_sites` must have matching entry in `vault_ezplatform_sites`.
 
 Sites without a matching vault entry:
 {% for name in ezplatform_sites.keys() | difference(vault_ezplatform_sites.keys()) %}
@@ -7,4 +7,4 @@ Sites without a matching vault entry:
 
 Update `group_vars/{{ env }}/vault.yml` to continue.
 
-Docs: https://roots.io/trellis/docs/ezplatform-sites/#passwordssecrets
+Docs: https://roots.io/trellis/docs/wordpress-sites/#passwordssecrets

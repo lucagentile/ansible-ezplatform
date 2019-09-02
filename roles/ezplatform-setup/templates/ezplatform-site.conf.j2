@@ -20,7 +20,7 @@ server {
 
   {% block legacy_rules -%}
   # Legacy rules needed when EzPlatform used in combination with LegacyBridge
-  # include /etc/nginx/includes.d/ez_params.d/ez_legacy_rewrite_params;
+  include /etc/nginx/includes.d/ez_params.d/ez_legacy_rewrite_params;
   {% endblock -%}
 
   # Include remaining ez rewrite rules
@@ -144,7 +144,6 @@ server {
 
       {% block fastcgi_basic -%}
       include /etc/nginx/includes.d/ez_params.d/ez_fastcgi_params;
-
       # FPM socket
       # Possible values : unix:/var/run/php5-fpm.sock or 127.0.0.1:9000
       fastcgi_pass unix:/var/run/php-fpm-ezplatform.sock;
@@ -158,10 +157,18 @@ server {
       # Possible values: "prod" and "dev" out-of-the-box, other values possible with proper configuration
       # Make sure to comment the "ez_params.d/ez_prod_rewrite_params" include above in dev.
       # Defaults to "prod" if omitted
-      {% if env == 'development' -%}
+      {% if env == 'dev' -%}
       fastcgi_param SYMFONY_ENV dev;
       fastcgi_param SYMFONY_DEBUG 1;
       fastcgi_param SYMFONY_TMP_DIR /tmp/ezplatformcache/;
+      {% endif -%}
+
+      {% if env == 'qa' -%}
+        fastcgi_param SYMFONY_ENV qa;
+      {% endif -%}
+
+      {% if env == 'prod' -%}
+        fastcgi_param SYMFONY_ENV prod;
       {% endif -%}
 
       {%- endblock %}

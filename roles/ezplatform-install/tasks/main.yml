@@ -44,3 +44,9 @@
   become: no
   with_dict: "{{ ezplatform_sites }}"
 
+- name: Install eZ Platform
+  command: "php bin/console ezplatform:install clean"
+  args:
+    chdir: "{{ www_root }}/{{ item.key }}/{{ item.value.current_path | default('current') }}/"
+  with_dict: "{{ ezplatform_sites }}"
+

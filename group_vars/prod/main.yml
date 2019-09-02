@@ -1,0 +1,14 @@
+admin_user: root
+mysql_root_password: "{{ vault_mysql_root_password }}" # Define this variable in group_vars/production/vault.yml
+
+#2.5gb to mysql
+#4.5 to web server
+#1 extra
+#100mb average request
+
+php_fpm_pm: dynamic
+php_fpm_pm_max_children: 40
+php_fpm_pm_start_servers: 20
+php_fpm_pm_min_spare_servers: 10
+php_fpm_pm_max_spare_servers: 20
+php_fpm_pm_max_requests: 500

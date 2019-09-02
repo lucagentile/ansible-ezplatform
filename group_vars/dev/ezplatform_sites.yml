@@ -1,3 +1,5 @@
+# Documentation: https://roots.io/trellis/docs/local-development-setup/
+# `ezplatform_sites` options: https://roots.io/trellis/docs/wordpress-sites
 # Define accompanying passwords/secrets in group_vars/development/vault.yml
 
 ezplatform_sites:
@@ -15,4 +17,3 @@ ezplatform_sites:
     multisite:
       enabled: false
 #      enabled: true
-#      subdomains: true

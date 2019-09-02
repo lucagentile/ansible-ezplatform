@@ -19,5 +19,56 @@
 
 - name: Install Composer dependencies
   composer:
+    classmap_authoritative: yes
+    optimize_autoloader: yes
     no_scripts: yes
+    no_dev: yes
     working_dir: "{{ deploy_helper.new_release_path }}"
+
+- name: Copy parameters.yml
+  synchronize:
+    src: "{{ project_local_path }}/app/config/parameters.yml"
+    dest: "{{ deploy_helper.new_release_path }}/app/config/parameters.yml"
+    group: no
+    owner: no
+    rsync_opts: --chmod=Du=rwx,--chmod=Dg=rx,--chmod=Do=rx,--chmod=Fu=rw,--chmod=Fg=r,--chmod=Fo=r
+
+- name: Symfony cache clear
+  command: "php bin/console cache:clear --env={{ env }}"
+  args:
+    chdir: "{{ deploy_helper.new_release_path }}"
+
+- name: Symfony assets install
+  command: "php bin/console assets:install --symlink --env={{ env }}"
+  args:
+    chdir: "{{ deploy_helper.new_release_path }}"
+
+- name: Bazinga js translation dump
+  command: "php bin/console bazinga:js-translation:dump web/assets --env={{ env }} --merge-domains"
+  args:
+    chdir: "{{ deploy_helper.new_release_path }}"
+
+- name: Assetic dump
+  command: "php bin/console assetic:dump --env={{ env }}"
+  args:
+    chdir: "{{ deploy_helper.new_release_path }}"
+
+- name: Create eZ legacy symlink directories
+  command: "php bin/console ezpublish:legacy:symlink -c --force --env={{ env }}"
+  args:
+    chdir: "{{ deploy_helper.new_release_path }}"
+
+- name: Create eZ legacy symlink directories web
+  command: "php bin/console ezpublish:legacy:assets_install --relative --symlink --force --env={{ env }}"
+  args:
+    chdir: "{{ deploy_helper.new_release_path }}"
+
+- name: Create Conversa eZ legacy symlink directories
+  command: "php bin/console conversa:ezpublish:symlink --force --env={{ env }}"
+  args:
+    chdir: "{{ deploy_helper.new_release_path }}"
+
+- name: EzPublish generate autoloads
+  command: "php bin/php/ezpgenerateautoloads.php"
+  args:
+    chdir: "{{ deploy_helper.new_release_path }}/ezpublish_legacy"

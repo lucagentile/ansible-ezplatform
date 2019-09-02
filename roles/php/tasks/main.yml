@@ -17,6 +17,12 @@
 #    state: started
 #    enabled: true
 
+- name: Start php7.2-fpm service
+  service:
+    name: php7.2-fpm
+    state: started
+    enabled: true
+
 - name: Check for existing php7.2-fpm service
   stat:
     path: /etc/init.d/php7.2-fpm

@@ -31,22 +31,26 @@ project_templates:
 #     mode: '0755'        // <- optional, must be quoted, defaults to `'0755'` if `directory` or `'0644'` if `file`
 #     type: directory     // <- optional, defaults to `directory`, options: `directory` or `file`
 project_shared_children:
-  - path: web/app/uploads
-    src: uploads
+  - path: var/storage
+    src: var/storage
+  - path: ezpublish_legacy/var/ezdemo_site/storage
+    src: ezpublish_legacy/var/ezdemo_site/storage
+  - path: var/sessions
+    src: var/sessions
 
 # The project_environment is a list of environment variables that can be used in hooks
 # Example:
 # project_environment:
 #   WP_ENV: "production"
 project_environment:
-  WP_ENV: "{{ env }}"
+  SYMFONY_ENV: "{{ env }}"
 
 # The project_current_path is the symlink used for the latest or active deployment
 # - default is 'current'
 project_current_path: "{{ project.current_path | default('current') }}"
 
 # Whether to run `wp core update-db` at end of each deploy
-update_db_on_deploy: true
+update_db_on_deploy: false
 
 # Helpers
 project: "{{ ezplatform_sites[site] }}"
