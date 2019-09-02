@@ -93,7 +93,7 @@ A base Ubuntu 18.04 (Bionic) server is required for setting up remote servers. O
 
 Remember that after provisioning a remote server, composer tasks like `composer install` are demanded to the deploy task
 
-## Deploying to remote servers (WIP)
+## Deploying to remote server
 
 1. Add the `repo` (Git URL) of your eZ Platform project in the corresponding `group_vars/<environment>/ezplatform_sites.yml` file
 2. Set the `branch` you want to deploy
@@ -105,8 +105,7 @@ Remember that after provisioning a remote server, composer tasks like `composer 
 and use it for loading ezlegacy rewrite rules in nginx .conf files, and install php 7.2 or 7.3
 2. Add *imagick* and *gd* parameter, and use it for installing just one instead of both
 3. Use .env variables also for parameters.yml
-4. Deployment strategy
-5. Separate SYMFONY_HTTP_CACHE from php-fpm cache as parameter in sites.yml
+4. Separate SYMFONY_HTTP_CACHE from php-fpm cache as parameter in sites.yml
 
 ## Contributing
 
