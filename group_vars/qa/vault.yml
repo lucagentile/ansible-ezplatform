@@ -17,5 +17,3 @@ vault_ezplatform_sites:
       database_name: ezplatform
       database_password: fh4gQ37L4CodnzLLr8
       database_host: localhost
-      database_port: null
-      symfony_secret: ThisEzPlatformTokenIsNotSoSecret_PleaseChangeIt

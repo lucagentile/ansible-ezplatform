@@ -51,7 +51,7 @@ pid        /run/nginx.pid;
 
 http {
   {% block http_begin %}{% endblock %}
-
+  server_names_hash_bucket_size 128;
   {% block server_tokens -%}
   # Hide nginx version information.
   # Default: on

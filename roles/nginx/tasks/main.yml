@@ -23,7 +23,7 @@
     creates: "{{ nginx_path }}/ssl/dhparams.pem"
   when: sites_use_ssl
   notify: reload nginx
-  tags: [diffie-hellman, letsencrypt, ezplatform, nginx-includes, nginx-sites]
+  tags: [diffie-hellman, letsencrypt, ezplatform, ezplatform-setup, nginx-includes, nginx-sites]
 
 - name: Copy h5bp configs
   copy:

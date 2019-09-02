@@ -1,6 +1,6 @@
 ntp_timezone: Etc/UTC
 
-env_groups: "{{ ['development', 'staging', 'production'] | intersect(group_names) }}"
+env_groups: "{{ ['dev', 'qa', 'prod'] | intersect(group_names) }}"
 
 envs_with_ez_sites: "{{
   lookup('filetree', playbook_dir + '/group_vars') |

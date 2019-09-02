@@ -4,6 +4,7 @@
 listen = /var/run/php-fpm-ezplatform.sock
 listen.owner = www-data
 listen.group = www-data
+listen.mode = 0666
 user = {{ web_user }}
 group = {{ web_group }}
 pm = {{ php_fpm_pm }}

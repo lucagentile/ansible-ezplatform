@@ -1,13 +1,13 @@
 ---
 - name: Set ansible_python_interpreter
-  hosts: web:&development
+  hosts: web:&dev
   gather_facts: false
   become: yes
   roles:
     - { role: python_interpreter, tags: [always] }
 
 - name: "Install LEMP Stack with PHP 7.2 and MariaDB MySQL"
-  hosts: web:&development
+  hosts: web:&dev
   become: yes
   remote_user: vagrant
 

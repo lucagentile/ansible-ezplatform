@@ -8,7 +8,7 @@ show_usage() {
   echo "Usage: deploy <environment> <site name> [options]
 
 <environment> is the environment to deploy to ("staging", "production", etc)
-<site name> is the WordPress site to deploy (name defined in "ezplatform_sites")
+<site name> is the eZ Platform site to deploy (name defined in "ezplatform_sites")
 [options] is any number of parameters that will be passed to ansible-playbook
 
 Available environments:

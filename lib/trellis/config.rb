@@ -62,11 +62,11 @@ module Trellis
     end
 
     def path
-      File.join(@root_path, 'group_vars', 'development', 'ezplatform_sites.yml')
+      File.join(@root_path, 'group_vars', 'dev', 'ezplatform_sites.yml')
     end
 
     def template_content
-      File.read(File.join(@root_path, 'roles', 'common', 'templates', 'site_hosts.j2')).sub!('{{ env }}', 'development').gsub!(/com$/, 'dev')
+      File.read(File.join(@root_path, 'roles', 'common', 'templates', 'site_hosts.j2')).sub!('{{ env }}', 'dev').gsub!(/com$/, 'dev')
     end
 
     def fail_with(message:)

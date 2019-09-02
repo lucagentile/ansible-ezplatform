@@ -87,7 +87,7 @@
 
       sudo easy_install pip
       pip install passlib
-  when: env != 'development' and darwin_without_passlib | default(false)
+  when: env != 'dev' and darwin_without_passlib | default(false)
   run_once: true
 
 - name: Retrieve local SSH client's settings per host
@@ -141,11 +141,11 @@
   user:
     name: vagrant
     generate_ssh_key: yes
-  when: env == 'development'
+  when: env == 'dev'
 
 - name: Retrieve SSH client IP
   ipify_facts:
   delegate_to: localhost
   become: no
-  when: env != 'development' and ssh_client_ip_lookup | default(true)
+  when: env != 'dev' and ssh_client_ip_lookup | default(true)
   tags: [fail2ban, ferm]
